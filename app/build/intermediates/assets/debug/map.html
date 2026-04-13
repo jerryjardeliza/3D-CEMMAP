@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#0d0d0d; overflow:hidden; width:100vw; height:100vh; }
+  canvas { display:block; width:100vw; height:100vh; touch-action:none; }
+  #loading {
+    position:fixed; inset:0; background:#111318;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    color:#e2e8f0; font-family:sans-serif; font-size:14px; gap:12px;
+  }
+  .spinner {
+    width:36px; height:36px; border:3px solid #2e3250;
+    border-top-color:#4a4a4a; border-radius:50%;
+    animation:spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform:rotate(360deg); } }
+</style>
+</head>
+<body>
+<div id="loading"><div class="spinner"></div><span id="load-text">Loading 3D Map...</span></div>
+
+<!-- All scripts loaded locally — no CDN dependency -->
+<script src="three.min.js"></script>
+<script src="OrbitControls.js"></script>
+<script src="GLTFLoader.js"></script>
+
+<script>
+// THREE is now a global from the UMD build
+const scene    = new THREE.Scene();
+scene.background = new THREE.Color(0x0a0f0c);
+
+// Low pixel ratio for performance on mobile
+const renderer = new THREE.WebGLRenderer({ antialias: false });
+renderer.setPixelRatio(1); // force 1x — biggest perf win on mobile
+renderer.setSize(innerWidth, innerHeight);
+renderer.shadowMap.enabled = false; // disable shadows for speed
+document.body.appendChild(renderer.domElement);
+
+const camera = new THREE.PerspectiveCamera(50, innerWidth / innerHeight, 0.1, 1000);
+camera.position.set(0, 12, 18);
+
+const controls = new THREE.OrbitControls(camera, renderer.domElement);
+controls.enableDamping      = true;
+controls.dampingFactor      = 0.08;
+controls.screenSpacePanning = true;
+controls.minDistance        = 1;
+controls.maxDistance        = 500;
+controls.zoomSpeed          = 1.5;
+
+// Lighting — single light, no shadows
+scene.add(new THREE.AmbientLight(0xffffff, 1.0));
+const sun = new THREE.DirectionalLight(0xfff5e0, 0.8);
+sun.position.set(10, 20, 10);
+scene.add(sun);
+
+window.addEventListener('resize', () => {
+  renderer.setSize(innerWidth, innerHeight);
+  camera.aspect = innerWidth / innerHeight;
+  camera.updateProjectionMatrix();
+});
+
+// ── State ─────────────────────────────────────────────────────────────────────
+const COLORS = { occupied: 0xef4444, available: 0x22c55e, reserved: 0xf59e0b };
+  const DEFAULT_COLOR = 0x4a4a4a;
+let markers = [];
+
+// ── GLB Loader ────────────────────────────────────────────────────────────────
+const loader = new THREE.GLTFLoader();
+
+window.loadGlb = function(url) {
+  if (!url) return;
+  document.getElementById('loading').style.display = 'flex';
+  document.getElementById('load-text').textContent = 'Loading 3D Map...';
+
+  const timeout = setTimeout(() => {
+    document.getElementById('loading').style.display = 'none';
+  }, 60000);
+
+  const doLoad = (src) => {
+    loader.load(src,
+      (gltf) => {
+        clearTimeout(timeout);
+        const model = gltf.scene;
+        model.traverse(c => {
+          if (c.isMesh) {
+            c.castShadow = false; c.receiveShadow = false;
+            if (c.material) { c.material.roughness = 1; c.material.metalness = 0; }
+          }
+        });
+        const box = new THREE.Box3().setFromObject(model);
+        model.position.sub(box.getCenter(new THREE.Vector3()));
+        scene.add(model);
+        const size = box.getSize(new THREE.Vector3()).length();
+        camera.position.set(0, size * 0.7, size * 1.1);
+        controls.minDistance = size * 0.05;
+        controls.maxDistance = size * 8;
+        controls.update();
+        document.getElementById('loading').style.display = 'none';
+      },
+      (xhr) => {
+        if (xhr.total) {
+          const pct = Math.round(xhr.loaded / xhr.total * 100);
+          document.getElementById('load-text').textContent = 'Downloading... ' + pct + '%\n(first time only)';
+        }
+      },
+      () => { clearTimeout(timeout); document.getElementById('loading').style.display = 'none'; }
+    );
+  };
+
+  // Cache API — download once, serve instantly after
+  if ('caches' in window) {
+    const CACHE = 'glb-v1';
+    caches.open(CACHE).then(cache => {
+      cache.match(url).then(cached => {
+        if (cached) {
+          cached.blob().then(blob => doLoad(URL.createObjectURL(blob)));
+        } else {
+          doLoad(url);
+          fetch(url).then(r => { if (r.ok) cache.put(url, r); }).catch(() => {});
+        }
+      });
+    });
+  } else {
+    doLoad(url);
+  }
+};
+
+// ── Markers ───────────────────────────────────────────────────────────────────
+window.setMarkers = function(jsonStr) {
+  const data = JSON.parse(jsonStr);
+  markers.forEach(m => { scene.remove(m.mesh); scene.remove(m.ring); });
+  markers = [];
+  // Shared geometries for performance
+  const geo     = new THREE.CylinderGeometry(0.12, 0.05, 0.5, 6);
+  const ringGeo = new THREE.RingGeometry(0.18, 0.25, 12);
+  data.forEach(d => {
+    const color = COLORS[d.status] || DEFAULT_COLOR;
+    const mesh  = new THREE.Mesh(geo,
+      new THREE.MeshBasicMaterial({ color })); // MeshBasic = no lighting calc
+    mesh.position.set(+d.x, +d.y + 0.25, +d.z);
+    mesh.userData.markerData = d;
+    scene.add(mesh);
+    const ring = new THREE.Mesh(ringGeo,
+      new THREE.MeshBasicMaterial({ color, side: THREE.DoubleSide, transparent: true, opacity: 0.5 }));
+    ring.rotation.x = -Math.PI / 2;
+    ring.position.set(+d.x, +d.y + 0.01, +d.z);
+    scene.add(ring);
+    markers.push({ mesh, ring, data: d });
+  });
+};
+
+// ── Camera controls ───────────────────────────────────────────────────────────
+window.mapZoom = function(dir) {
+  const fwd  = new THREE.Vector3();
+  camera.getWorldDirection(fwd);
+  const step = camera.position.distanceTo(controls.target) * 0.25 * dir;
+  camera.position.addScaledVector(fwd, step);
+  controls.update();
+};
+window.resetCamera = function() {
+  camera.position.set(0, 12, 18);
+  controls.target.set(0, 0, 0);
+  controls.update();
+};
+
+// Focus camera on a specific marker by ID (called from Java)
+window.focusMarker = function(id) {
+  const m = markers.find(m => m.data.id == id);
+  if (!m) return;
+  const p = m.mesh.position;
+  camera.position.set(p.x, p.y + 5, p.z + 8);
+  controls.target.set(p.x, p.y, p.z);
+  controls.update();
+  const orig = m.mesh.material.color.getHex();
+  m.mesh.material.color.set(0xffffff);
+  setTimeout(() => m.mesh.material.color.set(orig), 1000);
+};
+
+// Search by name — called from map search bar in Java
+window.focusMarkerByName = function(query) {
+  const q = query.toLowerCase();
+  const found = markers.find(m =>
+    (m.data.deceased_name || '').toLowerCase().includes(q) ||
+    (m.data.name || '').toLowerCase().includes(q)
+  );
+  if (found) window.focusMarker(found.data.id);
+};
+
+// ── Tap marker ────────────────────────────────────────────────────────────────
+const raycaster = new THREE.Raycaster();
+const mouse     = new THREE.Vector2();
+let tapStart    = { x: 0, y: 0 };
+
+renderer.domElement.addEventListener('touchstart', e => {
+  tapStart = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+}, { passive: true });
+
+renderer.domElement.addEventListener('touchend', e => {
+  const t = e.changedTouches[0];
+  if (Math.hypot(t.clientX - tapStart.x, t.clientY - tapStart.y) > 10) return;
+  mouse.x =  (t.clientX / innerWidth)  * 2 - 1;
+  mouse.y = -(t.clientY / innerHeight) * 2 + 1;
+  raycaster.setFromCamera(mouse, camera);
+  const hits = raycaster.intersectObjects(markers.map(m => m.mesh));
+  if (hits.length && window.Android)
+    Android.onMarkerClick(JSON.stringify(hits[0].object.userData.markerData));
+}, { passive: true });
+
+renderer.domElement.addEventListener('click', e => {
+  mouse.x =  (e.clientX / innerWidth)  * 2 - 1;
+  mouse.y = -(e.clientY / innerHeight) * 2 + 1;
+  raycaster.setFromCamera(mouse, camera);
+  const hits = raycaster.intersectObjects(markers.map(m => m.mesh));
+  if (hits.length && window.Android)
+    Android.onMarkerClick(JSON.stringify(hits[0].object.userData.markerData));
+});
+
+// ── Render loop — throttled to 30fps on mobile ────────────────────────────────
+let last = 0;
+const FPS = 30;
+const interval = 1000 / FPS;
+(function animate(now) {
+  requestAnimationFrame(animate);
+  if (now - last < interval) return;
+  last = now;
+  controls.update();
+  renderer.render(scene, camera);
+})();
+
+// Render loop starts — Java will call loadGlb(url) once assets API responds
+</script>
+</body>
+</html>

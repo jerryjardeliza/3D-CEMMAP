@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0F1117">
+
+    <!-- Full-cover background video -->
+    <com.cemetery.map.view.FullscreenVideoView
+        android:id="@+id/video_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Dark overlay -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#55000000" />
+
+    <!-- Centered content -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="32dp">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/ic_cross"
+            android:layout_marginBottom="16dp"
+            android:contentDescription="Cross" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cemmap 3D"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:textColor="#E2E8F0"
+            android:letterSpacing="0.05" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hda. Estrella , Barangay XIV, Victorias City"
+            android:textSize="13sp"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="64dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_enter"
+            android:layout_width="200dp"
+            android:layout_height="52dp"
+            android:text="Enter"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            app:cornerRadius="26dp"
+            app:backgroundTint="#4a4a4a"
+            app:strokeColor="#9e9e9e"
+            app:strokeWidth="1dp" />
+
+    </LinearLayout>
+
+    <!-- Copyright pinned to very bottom -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:text="©2026 Victorias City People Memorial Park Cemetery"
+        android:textSize="11sp"
+        android:textColor="#FFFFFF"
+        android:gravity="center"
+        android:padding="16dp" />
+
+</FrameLayout>

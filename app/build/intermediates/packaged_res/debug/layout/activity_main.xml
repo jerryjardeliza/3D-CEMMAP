@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0d0d0d">
+
+    <!-- WebView-based 3D map — renders GLB via Three.js -->
+    <com.cemetery.map.view.CemeteryMapView
+        android:id="@+id/map_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Loading indicator -->
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+    <!-- Error / offline message -->
+    <TextView
+        android:id="@+id/tv_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="#94A3B8"
+        android:textSize="14sp"
+        android:padding="16dp"
+        android:gravity="center"
+        android:visibility="gone" />
+
+    <!-- Search bar overlay (top of map) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:orientation="horizontal"
+        android:layout_margin="12dp"
+        android:background="@drawable/search_bar_bg"
+        android:padding="4dp"
+        android:elevation="6dp">
+
+        <EditText
+            android:id="@+id/et_map_search"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight="1"
+            android:hint="Search deceased name..."
+            android:textColor="#E2E8F0"
+            android:textColorHint="#94A3B8"
+            android:textSize="14sp"
+            android:paddingHorizontal="12dp"
+            android:background="@null"
+            android:imeOptions="actionSearch"
+            android:inputType="textPersonName"
+            android:singleLine="true" />
+
+        <ImageButton
+            android:id="@+id/btn_map_search"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:src="@android:drawable/ic_search_category_default"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:tint="#9e9e9e"
+            android:contentDescription="Search" />
+
+    </LinearLayout>
+
+    <!-- Zoom + Reset controls (top-right, below search bar) -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|end"
+        android:orientation="vertical"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="12dp"
+        android:background="#CC1a1a1a"
+        android:padding="4dp"
+        android:elevation="4dp">
+
+        <ImageButton
+            android:id="@+id/btn_zoom_in"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@android:drawable/ic_input_add"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:tint="#E2E8F0"
+            android:contentDescription="Zoom In" />
+
+        <ImageButton
+            android:id="@+id/btn_zoom_out"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@android:drawable/ic_delete"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:tint="#E2E8F0"
+            android:contentDescription="Zoom Out" />
+
+        <ImageButton
+            android:id="@+id/btn_reset"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@android:drawable/ic_menu_compass"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:tint="#E2E8F0"
+            android:contentDescription="Reset Camera" />
+    </LinearLayout>
+
+    <!-- Legend (bottom-left, above nav bar) -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|start"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="72dp"
+        android:orientation="vertical"
+        android:background="#CC1a1a1a"
+        android:padding="8dp"
+        android:elevation="4dp">
+
+        <include layout="@layout/legend_item_red" />
+        <include layout="@layout/legend_item_green" />
+        <include layout="@layout/legend_item_yellow" />
+    </LinearLayout>
+
+    <!-- Bottom Navigation -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="#1a1a1a"
+        app:menu="@menu/bottom_nav_menu"
+        app:itemIconTint="@color/nav_item_color"
+        app:itemTextColor="@color/nav_item_color" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

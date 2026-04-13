@@ -1,0 +1,142 @@
+[
+    {
+        "merged": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-merged_res-33:\\layout_item_search_result.xml.flat",
+        "source": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-main-35:\\layout\\item_search_result.xml"
+    },
+    {
+        "merged": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-merged_res-33:\\menu_bottom_nav_menu.xml.flat",
+        "source": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-main-35:\\menu\\bottom_nav_menu.xml"
+    },
+    {
+        "merged": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-merged_res-33:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-main-35:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-merged_res-33:\\mipmap-xxxhdpi_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-main-35:\\mipmap-xxxhdpi\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-merged_res-33:\\mipmap-hdpi_ic_launcher.xml.flat",
+        "source": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-main-35:\\mipmap-hdpi\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-merged_res-33:\\layout_legend_item_yellow.xml.flat",
+        "source": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-main-35:\\layout\\legend_item_yellow.xml"
+    },
+    {
+        "merged": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-merged_res-33:\\mipmap-hdpi_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-main-35:\\mipmap-hdpi\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-merged_res-33:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-main-35:\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-merged_res-33:\\layout_activity_about.xml.flat",
+        "source": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-main-35:\\layout\\activity_about.xml"
+    },
+    {
+        "merged": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-merged_res-33:\\drawable_card_transparent.xml.flat",
+        "source": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-main-35:\\drawable\\card_transparent.xml"
+    },
+    {
+        "merged": "com.cemetery.map.app-merged_res-33:/layout_activity_glb_viewer.xml.flat",
+        "source": "com.cemetery.map.app-main-35:/layout/activity_glb_viewer.xml"
+    },
+    {
+        "merged": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-merged_res-33:\\mipmap-xhdpi_ic_launcher.xml.flat",
+        "source": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-main-35:\\mipmap-xhdpi\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-merged_res-33:\\drawable_ic_launcher_fg.xml.flat",
+        "source": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-main-35:\\drawable\\ic_launcher_fg.xml"
+    },
+    {
+        "merged": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-merged_res-33:\\layout_activity_burial_detail.xml.flat",
+        "source": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-main-35:\\layout\\activity_burial_detail.xml"
+    },
+    {
+        "merged": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-merged_res-33:\\layout_activity_splash.xml.flat",
+        "source": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-main-35:\\layout\\activity_splash.xml"
+    },
+    {
+        "merged": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-merged_res-33:\\mipmap-xxxhdpi_ic_launcher.xml.flat",
+        "source": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-main-35:\\mipmap-xxxhdpi\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-merged_res-33:\\drawable_search_bar_bg.xml.flat",
+        "source": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-main-35:\\drawable\\search_bar_bg.xml"
+    },
+    {
+        "merged": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-merged_res-33:\\layout_bottom_sheet_marker.xml.flat",
+        "source": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-main-35:\\layout\\bottom_sheet_marker.xml"
+    },
+    {
+        "merged": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-merged_res-33:\\layout_legend_item_green.xml.flat",
+        "source": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-main-35:\\layout\\legend_item_green.xml"
+    },
+    {
+        "merged": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-merged_res-33:\\mipmap-mdpi_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-main-35:\\mipmap-mdpi\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-merged_res-33:\\color_nav_item_color.xml.flat",
+        "source": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-main-35:\\color\\nav_item_color.xml"
+    },
+    {
+        "merged": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-merged_res-33:\\drawable_circle.xml.flat",
+        "source": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-main-35:\\drawable\\circle.xml"
+    },
+    {
+        "merged": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-merged_res-33:\\layout_activity_burials.xml.flat",
+        "source": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-main-35:\\layout\\activity_burials.xml"
+    },
+    {
+        "merged": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-merged_res-33:\\drawable_ic_cross.xml.flat",
+        "source": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-main-35:\\drawable\\ic_cross.xml"
+    },
+    {
+        "merged": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-merged_res-33:\\drawable_bg_status_chip.xml.flat",
+        "source": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-main-35:\\drawable\\bg_status_chip.xml"
+    },
+    {
+        "merged": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-merged_res-33:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-main-35:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-merged_res-33:\\layout_item_burial_record.xml.flat",
+        "source": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-main-35:\\layout\\item_burial_record.xml"
+    },
+    {
+        "merged": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-merged_res-33:\\drawable_ic_launcher.xml.flat",
+        "source": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-main-35:\\drawable\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-merged_res-33:\\mipmap-xhdpi_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-main-35:\\mipmap-xhdpi\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-merged_res-33:\\mipmap-xxhdpi_ic_launcher.xml.flat",
+        "source": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-main-35:\\mipmap-xxhdpi\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-merged_res-33:\\layout_legend_item_red.xml.flat",
+        "source": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-main-35:\\layout\\legend_item_red.xml"
+    },
+    {
+        "merged": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-merged_res-33:\\mipmap-xxhdpi_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-main-35:\\mipmap-xxhdpi\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-merged_res-33:\\layout_detail_row.xml.flat",
+        "source": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-main-35:\\layout\\detail_row.xml"
+    },
+    {
+        "merged": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-merged_res-33:\\layout_activity_search.xml.flat",
+        "source": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-main-35:\\layout\\activity_search.xml"
+    },
+    {
+        "merged": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-merged_res-33:\\mipmap-mdpi_ic_launcher.xml.flat",
+        "source": "C:\\Users\\jerry\\.gradle\\daemon\\8.4\\com.cemetery.map.app-main-35:\\mipmap-mdpi\\ic_launcher.xml"
+    }
+]
