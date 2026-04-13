@@ -69,3 +69,5 @@ app/src/main/java/com/cemetery/map/
 | `api/mobile/markers.php` | All plot markers with burial info |
 | `api/mobile/search.php?name=` | Search by deceased name |
 | `api/mobile/assets.php` | GLB + video URLs |
+
+okay
